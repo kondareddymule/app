@@ -1,0 +1,33 @@
+#chart-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .p-dropdown {
+    width: 100%;
+}
+.sumbitButton {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+::ng-deep .p-inputtext {
+    width: 100%;
+}
+
+::ng-deep .orgchart {
+    background-image: none !important;
+}
+
+.orgchart .node .title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+::ng-deep .orgchart .node {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
