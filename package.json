@@ -21,6 +21,7 @@
     "jquery": "^3.7.1",
     "jquery-ui": "^1.14.1",
     "orgchart": "^5.0.0",
+    "primeicons": "^7.0.0",
     "primeng": "^15.4.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

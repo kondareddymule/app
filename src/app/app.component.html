@@ -1,23 +1,27 @@
-<p-button label="+" (click)="show()"/>
+<p-button label="+" (click)="show()" *ngIf="!datasource"/>
+<p-button (click)="changeDirection()" *ngIf="datasource">Switch to {{ direction === 't2b' ? 'L2R' : 'T2B' }}</p-button>
+<div id="chart-container" [ngClass]="direction === 'l2r' ? 'l2r': 't2b'"></div>
 
-<div id="chart-container"></div>
 
-
-
-<p-dialog header="Add Node" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem', height: 'auto' }">
-    <div>
+<p-dialog [header]="editedNode ? 'Edit Node' : 'Add Node'" [modal]="true" [(visible)]="visible" [style]="{ width: '25rem', height: 'auto' }" [draggable]="false" [resizable]="false">
+    <div *ngIf="!editedNode">
+    <div *ngIf="datasource">
     <label style="display: inline-flex; margin-bottom: 10px;">Parent Node *</label>
-    <p-dropdown 
-        [options]="options" 
-        [(ngModel)]="parent" 
-        optionLabel="name"
-        optionValue="code" 
-        placeholder="Select parent Node" 
-        scrollHeight="170px"
-        />
+    <input pInputText type="text" [(ngModel)]="parentLabel" name="parentLabel" readonly/>
+    </div>
     </div>
     <label style="display: inline-flex; margin-bottom: 10px; margin-top: 10px;">Child Node *</label><br>
-    <input pInputText type="text" [(ngModel)]="text" name="text"/>
+    <input pInputText type="text" [(ngModel)]="text" name="text" maxlength="10"/>
     <p-button label="sumbit" class="sumbitButton" (click)="onSumbit()"/>
 
 </p-dialog>
+
+
+<p-dialog header="Delete Node" [modal]="true" [(visible)]="deleteshow" [style]="{ width: '25rem', height: 'auto' }" [draggable]="false" [resizable]="false">
+    <p style="text-align: center; font-weight: bold;">Are You Sure? Do You want to delete Node</p>
+    <div style="display: flex; align-items: center; justify-content: right; gap: 10px;">
+        <button (click)="deleteshow = false" class="canclebutton">Cancle</button>
+        <p-button label="sumbit" (click)="deleteNode()"/>
+    </div>
+</p-dialog>
+
